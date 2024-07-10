@@ -1,2 +1,13 @@
 DEBUG = {{ 'True' if env.DEBUG else 'False' }}
 SECRET = "{{ env.SECRET_KEY }}"
+ALLOWED_ENVIRONMENTS = ['Production', 'Development', 'CPT', 'JHB']
+ASI_QUERIES = [
+    {'text': 'CPT', 'query': [['environment', 'CPT']]},
+    {'text': 'JHB', 'query': [['environment', 'JHB']]},
+    {'text': 'Production', 'query': [['environment', 'Production']]},
+    {'text': 'Heartbeats', 'query': {'q': 'event:Heartbeat'}},
+]
+COLUMNS = [
+    'severity', 'status', 'createTime', 'lastReceiveTime', 'timeoutLeft', 'duplicateCount',
+    'customer', 'environment', 'service', 'resource', 'event', 'value', 'text'
+]

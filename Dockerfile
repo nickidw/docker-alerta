@@ -25,10 +25,10 @@ ENV HEARTBEAT_SEVERITY=major
 ENV HK_EXPIRED_DELETE_HRS=2
 ENV HK_INFO_DELETE_HRS=12
 
-LABEL org.opencontainers.image.description="Alerta API (prod)" \
+LABEL org.opencontainers.image.description="Alerta API (prod-nickidw)" \
       org.opencontainers.image.created=$BUILD_DATE \
-      org.opencontainers.image.url="https://github.com/alerta/alerta/pkgs/container/alerta-api" \
-      org.opencontainers.image.source="https://github.com/alerta/alerta" \
+      org.opencontainers.image.url="https://github.com/nickidw/alerta/pkgs/container/alerta-api" \
+      org.opencontainers.image.source="https://github.com/nickidw/alerta" \
       org.opencontainers.image.version=$RELEASE \
       org.opencontainers.image.revision=$VERSION \
       org.opencontainers.image.licenses=Apache-2.0
