@@ -1,4 +1,4 @@
-FROM python:3.9-slim-buster
+FROM ghcr.io/nickidw/alerta-api:latest
 
 ENV PYTHONUNBUFFERED 1
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
@@ -63,14 +63,14 @@ RUN curl -fsSL https://nginx.org/keys/nginx_signing.key | apt-key add - && \
     rm -rf /var/lib/apt/lists/*
 
 # hadolint ignore=DL3008
-RUN curl -fsSL https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add - && \
-    echo "deb https://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends \
-    mongodb-org-shell && \
-    apt-get -y clean && \
-    apt-get -y autoremove && \
-    rm -rf /var/lib/apt/lists/*
+#RUN curl -fsSL https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add - && \
+#    echo "deb https://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list && \
+#    apt-get update && \
+#    apt-get install -y --no-install-recommends \
+#    mongodb-org-shell && \
+#    apt-get -y clean && \
+#    apt-get -y autoremove && \
+#    rm -rf /var/lib/apt/lists/*
 
 COPY requirements*.txt /app/
 
