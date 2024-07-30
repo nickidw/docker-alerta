@@ -66,7 +66,7 @@ if [ ! -f "${SUPERVISORD_CONF_FILE}" ]; then
 fi
 
 # Generate cert, if not present
-if [ ! -f "${TLS_CERT_FILE}"]; then
+if [ ! -f "${TLS_CERT_FILE}" ]; then
   echo "# Generate certificate."
   openssl req -newkey rsa:4096  -x509  -sha512  -days 365 -nodes -out ${TLS_CERT_FILE} -keyout ${TLS_KEY_FILE}
 fi
