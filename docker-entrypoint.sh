@@ -14,8 +14,8 @@ ADMIN_USER=${ADMIN_USERS%%,*}
 ADMIN_PASSWORD=${ADMIN_PASSWORD:-alerta}
 MAXAGE=${ADMIN_KEY_MAXAGE:-315360000}  # default=10 years
 
-TLS_CERT_FILE=/etc/ssl/certs/certificate.pem
-TLS_KEY_FILE=/etc/ssl/certs/privatekey.pem
+TLS_CERT_FILE=/app/certificate.pem
+TLS_KEY_FILE=/app/privatekey.pem
 
 env | sort
 
