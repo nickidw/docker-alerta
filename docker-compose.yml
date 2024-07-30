@@ -6,7 +6,7 @@ services:
     # volumes:
       # - $PWD/config/config.json:/web/config.json
     ports:
-      - 8080:8080
+      - 443:443
     depends_on:
       - db
     environment:

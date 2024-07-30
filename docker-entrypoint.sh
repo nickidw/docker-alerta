@@ -14,6 +14,9 @@ ADMIN_USER=${ADMIN_USERS%%,*}
 ADMIN_PASSWORD=${ADMIN_PASSWORD:-alerta}
 MAXAGE=${ADMIN_KEY_MAXAGE:-315360000}  # default=10 years
 
+TLS_CERT_FILE=/etc/ssl/certs/certificate.pem
+TLS_KEY_FILE=/etc/ssl/certs/privatekey.pem
+
 env | sort
 
 # Generate minimal server config, if not supplied
@@ -79,6 +82,12 @@ fi
 if [ ! -f "${ALERTA_WEB_CONF_FILE}" ]; then
   echo "# Create web configuration file."
   python3 -c "${JINJA2}" < ${ALERTA_WEB_CONF_FILE}.j2 >${ALERTA_WEB_CONF_FILE}
+fi
+
+# Generate cert, if not present
+if [ ! -f "${TLS_CERT_FILE}"]; then
+  echo "# Generate certificate."
+  openssl req -newkey rsa:4096  -x509  -sha512  -days 365 -nodes -out ${TLS_CERT_FILE} -keyout ${TLS_KEY_FILE}
 fi
 
 echo
