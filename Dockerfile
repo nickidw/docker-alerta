@@ -95,7 +95,7 @@ RUN tar zxvf /tmp/webui.tar.gz -C /tmp && \
 ENV ALERTA_SVR_CONF_FILE /app/alertad.conf
 ENV ALERTA_CONF_FILE /app/alerta.conf
 ENV ALERTA_WEB_CONF_FILE /web/config.json
-ENV ALERTA_ENDPOINT=http://localhost:8080/api
+ENV ALERTA_ENDPOINT=https://localhost/api
 
 COPY config/templates/app/ /app
 COPY config/templates/web/ /web
