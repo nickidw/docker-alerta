@@ -65,6 +65,12 @@ if [ ! -f "${SUPERVISORD_CONF_FILE}" ]; then
   python3 -c "${JINJA2}" < ${SUPERVISORD_CONF_FILE}.j2 >${SUPERVISORD_CONF_FILE}
 fi
 
+# Generate cert, if not present
+if [ ! -f "${TLS_CERT_FILE}"]; then
+  echo "# Generate certificate."
+  openssl req -newkey rsa:4096  -x509  -sha512  -days 365 -nodes -out ${TLS_CERT_FILE} -keyout ${TLS_KEY_FILE}
+fi
+
 # Generate nginx config, if not supplied.
 if [ ! -f "${NGINX_CONF_FILE}" ]; then
   echo "# Create nginx configuration file."
@@ -82,12 +88,6 @@ fi
 if [ ! -f "${ALERTA_WEB_CONF_FILE}" ]; then
   echo "# Create web configuration file."
   python3 -c "${JINJA2}" < ${ALERTA_WEB_CONF_FILE}.j2 >${ALERTA_WEB_CONF_FILE}
-fi
-
-# Generate cert, if not present
-if [ ! -f "${TLS_CERT_FILE}"]; then
-  echo "# Generate certificate."
-  openssl req -newkey rsa:4096  -x509  -sha512  -days 365 -nodes -out ${TLS_CERT_FILE} -keyout ${TLS_KEY_FILE}
 fi
 
 echo
