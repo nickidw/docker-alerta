@@ -68,7 +68,7 @@ fi
 # Generate cert, if not present
 if [ ! -f "${TLS_CERT_FILE}" ]; then
   echo "# Generate certificate."
-  openssl req -newkey rsa:4096  -x509  -sha512  -days 365 -nodes -out ${TLS_CERT_FILE} -keyout ${TLS_KEY_FILE}
+  openssl req -newkey rsa:4096  -x509  -sha512  -days 365 -nodes -out ${TLS_CERT_FILE} -keyout ${TLS_KEY_FILE} -subj "/C=ZA/ST=Western Cape/L=Cape Town/O=Ecentric Payment Systems/OU=IT/CN=alerta"
 fi
 
 # Generate nginx config, if not supplied.
