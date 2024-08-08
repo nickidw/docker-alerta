@@ -1,7 +1,7 @@
 #!make
 
 DOCKER=docker
-DOCKER_COMPOSE=docker-compose
+DOCKER_COMPOSE=docker compose
 
 .DEFAULT_GOAL:=help
 
